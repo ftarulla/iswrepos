@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ftarulla/iswrepos/issues"
   },
-  "homepage": "https://github.com/ftarulla/iswrepos#readme"
+  "homepage": "https://github.com/ftarulla/iswrepos#readme",
+  "dependencies": {
+    "nodegit": "^0.20.1"
+  }
 }
