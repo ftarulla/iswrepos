@@ -1,0 +1,11 @@
+{
+    "repositories": [{
+            "id": "1",
+            "name": "test",
+            "repo": "https://github.com/ftarulla/playingWithCrystal.git"
+        }, {
+            "id": "2",
+            "name": "test2",
+            "repo": "https://github.com/ftarulla/playingWithCrystal.git"
+        }]
+}
