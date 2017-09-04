@@ -1,0 +1,19 @@
+{
+  "name": "iswrepos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "iswrepos.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ftarulla/iswrepos.git"
+  },
+  "author": "ISW",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ftarulla/iswrepos/issues"
+  },
+  "homepage": "https://github.com/ftarulla/iswrepos#readme"
+}
