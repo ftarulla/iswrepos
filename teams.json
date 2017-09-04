@@ -1,0 +1,11 @@
+{
+    "teams": [{
+            "id": "01",
+            "name": "LosPepes",
+            "members": [{ "name": "Pepito",
+                          "mail": "soy.pepito@mailinator.c"},
+                        { "name": "Pepito2",
+                          "mail": "soy.pepito.2@mailinator.c"}],
+            "repo": "https://github.com/ftarulla/playingWithCrystal.git"
+        }]
+}
