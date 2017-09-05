@@ -2,13 +2,14 @@
 var fs = require('fs');
 var Git = require('nodegit');
 
-// commands
-var cmdListTeams = require('./cmdListTeams');
+//
+var commands = require('./commands');
 
 
 var data = JSON.parse(fs.readFileSync('./teams.json', 'utf8'));
 var teams = data.teams;
 //
+
 
 // https://www.npmjs.com/package/commander
 var cliOptions = require('commander');
@@ -20,10 +21,10 @@ cliOptions
   .parse(process.argv);
 
 if (cliOptions.teams) {
-    cmdListTeams.list(teams);
+    commands.listTeams(teams);
 }
 if (cliOptions.status) {
-    console.log('showing status ...');
+    commands.reposStatus(teams);
 }
 
 
