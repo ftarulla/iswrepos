@@ -17,13 +17,10 @@ cliOptions
   .version('0.1.0')
   .option('-t, --teams', 'shows teams info')
   .option('-s, --status', 'shows repositories status')
-  // .option('-P, --pineapple', 'Add pineapple')
-  // .option('-b, --bbq-sauce', 'Add bbq sauce')
-  // .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
   .parse(process.argv);
 
 if (cliOptions.teams) {
-    cmdListTeams(teams);
+    cmdListTeams.list(teams);
 }
 if (cliOptions.status) {
     console.log('showing status ...');
@@ -101,8 +98,5 @@ var cmdShowReposInfo = function(teams) {
 
     // });
 }
-
-
-
 
 //cmdShowReposInfo(teams);

@@ -7,5 +7,13 @@
                         { "name": "Pepito2",
                           "mail": "soy.pepito.2@mailinator.c"}],
             "repo": "https://github.com/ftarulla/playingWithCrystal.git"
+        }, {
+            "id": "02",
+            "name": "TheBeatles",
+            "members": [{ "name": "John",
+                          "mail": "soy.john@mailinator.c"},
+                        { "name": "Paul",
+                          "mail": "soy.paul@mailinator.c"}],
+            "repo": "https://github.com/ftarulla/playingWithCrystal.git"
         }]
 }
