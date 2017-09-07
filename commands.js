@@ -1,42 +1,18 @@
 
-var clc = require('cli-color');
-
-
-var showTeamMembers = function(members) {
-    console.log(clc.bold("   Members: "));
-
-    var table = [
-    // [clc.bold("   Nombre"), clc.bold("email")]
-    ]
-    members.forEach(member => {
-        table.push(["   " + member.name, member.mail]);
-    });
-    console.log(clc.columns(table));
-}
-
-var showRepository = function(repo) {
-    console.log(clc.bold("   Repository: ") + repo);
-}
-
-
-var Printer = function(showMembers, showRepo) {
-    this.showMembers = showMembers;
-    this.showRepo = showRepo;
-}
-Printer.prototype.print = function(teams) {
-    teams.forEach(team => {
-        console.log(clc.yellow(team.id + "-" + team.name));
-        this.showMembers(team.members);
-        this.showRepo(team.repo);
-        console.log("--------------------------------------------------------------------------------");
-    });
-}
-
+//
+var Printer = require('./printer').Printer;
+var show = require('./shows');
 
 
 var listTeams = function(teams) {
-    var printer = new Printer(showTeamMembers, showRepository);
+    var printer = new Printer(show.teamMembers, show.repository);
+    printer.print(teams);
+}
+
+var reposStatus = function(teams) {
+    var printer = new Printer(show.teamMembers, show.repositoryWithStatus);
     printer.print(teams);
 }
 
 module.exports.listTeams = listTeams;
+module.exports.reposStatus = reposStatus;

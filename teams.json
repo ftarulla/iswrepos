@@ -9,11 +9,11 @@
             "repo": "https://github.com/ftarulla/playingWithCrystal.git"
         }, {
             "id": "02",
-            "name": "TheBeatles",
-            "members": [{ "name": "John",
-                          "mail": "soy.john@mailinator.c"},
-                        { "name": "Paul",
-                          "mail": "soy.paul@mailinator.c"}],
+            "name": "LosPepes(copy)",
+            "members": [{ "name": "Pepito",
+                          "mail": "soy.pepito@mailinator.c"},
+                        { "name": "Pepito2",
+                          "mail": "soy.pepito.2@mailinator.c"}],
             "repo": "https://github.com/ftarulla/playingWithCrystal.git"
         }]
 }

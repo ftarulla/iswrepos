@@ -1,6 +1,5 @@
 
 var fs = require('fs');
-var Git = require('nodegit');
 
 //
 var commands = require('./commands');
@@ -43,61 +42,6 @@ if (cliOptions.status) {
 // })
 
 
-var getRepoCommitInfo = function(path) {
-    return Git.Repository.open(path)
-        .then(function(repository) {
-            console.log("Repository found!!");
-            var info = {
-                repo: repository,
-            };
-            return info;
-        })
-        .then(function(info) {
-            return info.repo.getReferenceCommit('origin/master').then(function(commit) {
-                info.remoteCommit = commit;
-                return info;
-            });
-        })
-        .then(function(info) {
-            return info.repo.getReferenceCommit('master').then(function(commit) {
-                info.localCommit = commit;
-                return info;
-            });
-        })
-        .then(function(info) {
 
-            console.log(info.repo);
-            console.log(info.remoteCommit.id());
-            console.log(info.localCommit.id());
-
-            // if(info.remoteCommit.id() != info.localCommit.id()) {
-            //     console.log("El repositorio del grupo " + team.name + " necesita actualizarse.");
-            // }
-            return info;
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
-}
-
-var cmdShowReposInfo = function(teams) {
-    var gets = teams.map(function(team) {
-        var path = "./repositories/" + team.id + "-" + team.name + "/";
-        return getRepoCommitInfo(path);
-    });
-
-    Promise.all(gets)
-        .then(values => {
-            console.log(values);
-        });
-    // teams.forEach(function(team) {
-    //     // console.log(team.name);
-    //     // console.log(team.repo);
-
-
-
-
-    // });
-}
 
 //cmdShowReposInfo(teams);
