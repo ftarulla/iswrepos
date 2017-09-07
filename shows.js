@@ -26,6 +26,7 @@ var showTeamMembers = function(team) {
 var showRepository = function(team) {
     console.log(clc.bold("   Repository: ") + team.repo);
 }
+
 var showRepositoryWithStatus = function(team) {
 
     return getRepoCommitInfo("./repositories/" + team.id + "-" + team.name + "/")
