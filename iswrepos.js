@@ -9,39 +9,24 @@ var data = JSON.parse(fs.readFileSync('./teams.json', 'utf8'));
 var teams = data.teams;
 //
 
-
 // https://www.npmjs.com/package/commander
 var cliOptions = require('commander');
 
 cliOptions
-  .version('0.1.0')
-  .option('-t, --teams', 'shows teams info')
-  .option('-s, --status', 'shows repositories status')
-  .parse(process.argv);
+    .version('0.1.0')
+    .option('-t, --teams', 'shows teams info')
+    .option('-s, --status', 'shows repositories status')
+    .option('-c, --clone', 'clones repositories')
+    .option('-f, --force', 'force the given action')
+    .parse(process.argv);
 
-if (cliOptions.teams) {
+if(cliOptions.teams) {
     commands.listTeams(teams);
 }
-if (cliOptions.status) {
+if(cliOptions.status) {
     commands.reposStatus(teams);
 }
+if(cliOptions.clone) {
+    commands.cloneRepos(teams, cliOptions.force);
+}
 
-
-// teams.forEach(function(team) {
-
-//     var path = "./repositories/" + team.id + "-" + team.name + "/";
-
-//     Git.Clone(team.repo, path).then(function(repository) {
-//         console.log("done");
-
-//         var recentCommit = repository.getBranchCommit("master");
-//         console.log(recentCommit);
-//         console.log(recentCommit.message());
-
-//     });
-// })
-
-
-
-
-//cmdShowReposInfo(teams);

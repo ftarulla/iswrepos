@@ -39,7 +39,8 @@ var showRepositoryWithStatus = function(team) {
             console.log(clc.bold("   Repository: ") + team.repo + status);
         })
         .catch(function(error) {
-            reject(error);
+            console.log(clc.bold("   Repository: ") + team.repo + clc.red(" ERROR"));
+            console.log("   " + clc.red(error));
         });
 }
 

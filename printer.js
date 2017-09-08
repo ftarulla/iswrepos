@@ -4,14 +4,13 @@ var Printer = function(showMembers, showRepo) {
     this.showRepo = showRepo;
 }
 Printer.prototype.print = function(teams) {
-    var self = this;
 
-    teams.reduce(function(acum, team){
-        return  acum.then(function() {
-                        self.showMembers(team)
+    teams.reduce((acum, team) => {
+        return  acum.then(() => {
+                        this.showMembers(team)
                         return team;
                     })
-                    .then(self.showRepo)
+                    .then(this.showRepo)
                     .then(function() {
                         console.log("--------------------------------------------------------------------------------");
                     });
