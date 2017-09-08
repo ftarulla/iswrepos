@@ -20,11 +20,14 @@ cliOptions
     .option('-f, --force', 'force the given action')
     .parse(process.argv);
 
-if(cliOptions.teams) {
+if(cliOptions.teams && !cliOptions.status) {
     commands.listTeams(teams);
 }
-if(cliOptions.status) {
+if(!cliOptions.teams && cliOptions.status) {
     commands.reposStatus(teams);
+}
+if(cliOptions.teams && cliOptions.status) {
+    commands.listTeamsWithRepoStatus(teams);
 }
 if(cliOptions.clone) {
     commands.cloneRepos(teams, cliOptions.force);

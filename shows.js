@@ -23,8 +23,22 @@ var showTeamMembers = function(team) {
     return promise;
 }
 
+var showNoTeamMembers = function(team) {
+    var promise = new Promise(function(resolve, reject) {
+
+        console.log(clc.yellow(team.id + "-" + team.name));
+        resolve(team);
+    });
+
+    return promise;
+}
+
 var showRepository = function(team) {
     console.log(clc.bold("   Repository: ") + team.repo);
+}
+
+var showNoRepository = function(team) {
+    //console.log(clc.bold("   Repository: ") + team.repo);
 }
 
 var showRepositoryWithStatus = function(team) {
@@ -69,5 +83,9 @@ var getRepoCommitInfo = function(localPathToRepo) {
 }
 
 module.exports.teamMembers = showTeamMembers;
+module.exports.teamMembersDont = showNoTeamMembers;
+
 module.exports.repository = showRepository;
+module.exports.repositoryDont = showNoRepository;
+
 module.exports.repositoryWithStatus = showRepositoryWithStatus;

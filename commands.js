@@ -10,14 +10,20 @@ var show = require('./shows');
 
 
 var listTeams = function(teams) {
-    var printer = new Printer(show.teamMembers, show.repository);
+    var printer = new Printer(show.teamMembers, show.repositoryDont);
     printer.print(teams);
 }
 
 var reposStatus = function(teams) {
+    var printer = new Printer(show.teamMembersDont, show.repositoryWithStatus);
+    printer.print(teams);
+}
+
+var listTeamsWithRepoStatus = function(teams) {
     var printer = new Printer(show.teamMembers, show.repositoryWithStatus);
     printer.print(teams);
 }
+
 
 var cloneRepos = function(teams, isForce) {
 
@@ -57,3 +63,4 @@ var cloneRepos = function(teams, isForce) {
 module.exports.listTeams = listTeams;
 module.exports.reposStatus = reposStatus;
 module.exports.cloneRepos = cloneRepos;
+module.exports.listTeamsWithRepoStatus = listTeamsWithRepoStatus;
