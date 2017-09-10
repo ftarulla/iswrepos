@@ -46,12 +46,14 @@ var cloneRepos = function(teams, isForce) {
             teams.reduce(function(acum, team){
 
                 return acum.then(function() {
+                    process.stdout.write(clc.bold("Cloning " + team.id + "-" + team.name + "'s repository ... "));
                     return Git.Clone(team.repo, "./repositories/" + team.id + "-" + team.name + "/")
                                 .then(function(repository) {
-                                    console.log("Done");
+                                    console.log(clc.green(" done"));
                                 })
                                 .catch(function(error) {
-                                    console.log("Error on repository clone: " + error);
+                                    console.log(clc.red(" error: " + error));
+                                    //console.log("Error on repository clone: " + error);
                                 });
                 });
 
