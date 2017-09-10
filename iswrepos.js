@@ -18,6 +18,7 @@ cliOptions
     .option('-s, --status', 'shows repositories status')
     .option('-i, --ids <ids>', 'filter teams by ids', (val) => { return val.split(',')})
     .option('-c, --clone', 'clones repositories')
+    .option('-p, --pull', 'pull repositories')
     .option('-f, --force', 'force the given action')
     .parse(process.argv);
 
@@ -39,4 +40,6 @@ if(cliOptions.teams && cliOptions.status) {
 if(cliOptions.clone) {
     commands.cloneRepos(teams, cliOptions.force);
 }
-
+if(cliOptions.pull) {
+    commands.pullRepos(teams);
+}

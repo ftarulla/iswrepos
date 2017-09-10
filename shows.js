@@ -46,7 +46,7 @@ var showRepositoryWithStatus = function(team) {
     return getRepoCommitInfo("./repositories/" + team.id + "-" + team.name + "/")
         .then(repoInfo => {
 
-            var status = repoInfo.remoteCommit.id() == repoInfo.localCommit.id()
+            var status = repoInfo.remoteCommit.id().equal(repoInfo.localCommit.id())
                             ? clc.green(" is up-to-date")
                             : clc.red(" is out-dated");
 

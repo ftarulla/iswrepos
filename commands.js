@@ -24,7 +24,6 @@ var listTeamsWithRepoStatus = function(teams) {
     printer.print(teams);
 }
 
-
 var cloneRepos = function(teams, isForce) {
 
     var question = Promise.resolve({continue: true});
@@ -60,7 +59,36 @@ var cloneRepos = function(teams, isForce) {
         });
 }
 
+var pullRepos = function(teams, isForce) {
+
+    teams.reduce(function(acum, team){
+
+        return acum.then(function() {
+
+            return Git.Repository.open("./repositories/" + team.id + "-" + team.name + "/")
+                    .then(function(repository) {
+                        return repository.fetchAll()
+                                    .then(function() {
+                                        return repository;
+                                    });
+                    })
+                    .then(function(repository) {
+                        return repository.mergeBranches("master", "origin/master");
+                    })
+                    .then(function(repository) {
+                        console.log("Done pull for team: " + team.id);
+                    })
+                    .catch(function(error) {
+                        console.log("Error on repository clone: " + error + " (team: " + team.id + ")");
+                    });
+        });
+
+    }, Promise.resolve());
+
+}
+
 module.exports.listTeams = listTeams;
 module.exports.reposStatus = reposStatus;
 module.exports.cloneRepos = cloneRepos;
+module.exports.pullRepos = pullRepos;
 module.exports.listTeamsWithRepoStatus = listTeamsWithRepoStatus;
