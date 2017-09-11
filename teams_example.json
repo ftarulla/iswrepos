@@ -9,11 +9,11 @@
             "repo": "https://github.com/ftarulla/playingWithCrystal.git"
         }, {
             "id": "02",
-            "name": "LosPepes(copy)",
+            "name": "LosPepesCopy",
             "members": [{ "name": "Pepito",
                           "mail": "soy.pepito@mailinator.c"},
                         { "name": "Pepito2",
                           "mail": "soy.pepito.2@mailinator.c"}],
-            "repo": "https://github.com/ftarulla/playingWithCrystal.git"
+            "repo": "https://github.com/ftarulla/pointofvue.git"
         }]
 }

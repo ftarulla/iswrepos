@@ -37,6 +37,31 @@ var cloneRepos = function(teams, isForce) {
         }]);
     };
 
+    var Progresser = function(callback) {
+        this.dotdotdot = "";
+        this.continue = true;
+        this.callback = callback;
+    };
+    Progresser.prototype.stop = function() {
+        this.continue = false;
+    };
+    Progresser.prototype.start = function() {
+        setTimeout(() => {
+            if(this.dotdotdot == "    ") {
+                this.dotdotdot = "";
+            }
+            this.dotdotdot = this.dotdotdot + ".";
+            if(this.dotdotdot == "....") {
+                this.dotdotdot = "    ";
+            }
+            this.callback();
+
+            if(this.continue) {
+                this.start();
+            }
+        }, 500);
+    };
+
     question
         .then(function(answer) {
             if(!answer.continue) {
@@ -46,10 +71,38 @@ var cloneRepos = function(teams, isForce) {
             teams.reduce(function(acum, team){
 
                 return acum.then(function() {
-                    process.stdout.write(clc.bold("Cloning " + team.id + "-" + team.name + "'s repository ... "));
+
+                    // var cloneOptions = {
+                    //     fetchOpts: {
+                    //         callbacks: {
+                    //             transferProgress: function(value) {
+                    //                 console.log(value.receivedObjects() + " of " + value.totalObjects());
+                    //                 // console.log(value.indexedDeltas());
+                    //                 // console.log(value.indexedObjects());
+                    //                 // console.log(value.localObjects());
+                    //                 // console.log(value.receivedBytes());
+                    //                 // console.log(value.receivedObjects());
+                    //                 // console.log(value.totalDeltas());
+                    //                 // console.log(value.totalObjects());
+                    //             }
+                    //         }
+                    //     },
+                    //     checkoutOpts: new Git.CheckoutOptions({
+                    //         progressCb: function(value) {
+                    //             console.log(value);
+                    //         }
+                    //     })
+                    // }
+                    // return Git.Clone(team.repo, "./repositories/" + team.id + "-" + team.name + "/", cloneOptions)
+                    var progresser = new Progresser(function() {
+                        process.stdout.write(clc.bold("Cloning " + team.id + "-" + team.name + "'s repository" + this.dotdotdot + " \r"));
+                    });
+                    progresser.start();
+
                     return Git.Clone(team.repo, "./repositories/" + team.id + "-" + team.name + "/")
                                 .then(function(repository) {
-                                    console.log(clc.green(" done"));
+                                    progresser.stop();
+                                    console.log(clc.bold("Cloning " + team.id + "-" + team.name + "'s repository...") + clc.green("done"));
                                 })
                                 .catch(function(error) {
                                     console.log(clc.red(" error: " + error));
