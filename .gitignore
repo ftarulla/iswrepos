@@ -61,7 +61,7 @@ typings/
 repositories
 
 # teams
-teams.json
+teams*.json
 
 # screenshots
 screenshots

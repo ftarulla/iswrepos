@@ -50,6 +50,8 @@ var showRepositoryWithStatus = function(team) {
                             ? clc.green(" is up-to-date")
                             : clc.red(" is out-dated");
 
+            console.log(repoInfo.remoteCommit.id());
+            console.log(repoInfo.localCommit.id());
             console.log(clc.bold("   Repository: ") + team.repo + status);
         })
         .catch(function(error) {
